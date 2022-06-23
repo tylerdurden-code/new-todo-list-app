@@ -1,0 +1,181 @@
+*,*::after,*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary:#00FFFF;
+    --color-secondary:#B0E0E6;
+    --color-columnColor:#C0C0C0;
+
+}
+body {
+    font-family:'Staatliches', cursive;
+    letter-spacing: 1px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    height: 100px;
+    background-color:var(--color-primary);
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family:'Staatliches', cursive;
+    border: 5px solid green;
+}
+
+.mainPage {
+    flex: 1;
+    display: flex;
+    border: 5px solid green;
+
+}
+
+.todoList {
+    background-color: var(--color-secondary);
+    height: 100%;
+    flex: 1;
+    border: 5px solid green;
+}
+.myTasksList {
+    list-style: none;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.menuHeader {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.editMenuHeaderTitle {
+    cursor: pointer;
+    
+    
+}
+.menuHeaderTitle {
+    padding: 15px;
+    font-size: 25px;
+    font-weight: 900;
+}
+.menu {
+    width: 250px;
+    border: 5px solid green;
+    background-color: var(--color-columnColor);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.myTasksList > li {
+    cursor: pointer;
+    margin: 0px 0px 6px 0px;
+}
+
+.myTasksList > li:hover {
+    background-color: var(--color-primary)
+    
+} 
+
+.inputNewList {
+    border: none;
+    height: 30px;
+    width: 200px;
+    padding: 10px;
+    background-color: transparent;
+    border-bottom: 2px solid black;
+
+}
+.inputNewList:focus {
+    outline: none;
+}
+#deleteListBtn {
+    width: 200px;
+}
+
+
+.myTasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.deleteBtnDiv {
+    display: flex;
+    border: 5px solid green;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.deleteBtnDiv:hover {
+   color: red;
+    
+}
+
+.selectedTask {
+    background-color: var(--color-primary);
+    padding: 4px;
+}
+.todoListTitle {
+    display: flex;
+}
+
+.todoListHeader {
+    display: flex;
+    justify-content: space-around;
+    border: 5px solid green;
+}
+.listOfTodos {
+    list-style: none;
+}
+.listOfTodos > li {
+    background-color: var(--color-columnColor);
+    padding: 7px;
+    margin: 0px 0px 6px 0px;
+}
+
+.todos {
+    padding: 10px;
+    font-size: 40px;
+}
+
+#clearCompletedTasks {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+}
+#clearCompletedTasks:hover {
+    color: var(--color-primary);
+}
+.addIcon:hover {
+    color: var(--color-primary);
+
+}
+
+.addIcon {
+    cursor: pointer;
+}
+.todosBtns {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.liListOfTodos.priority1 {
+    background-color: red;
+}
+.liListOfTodos.priority2 {
+    background-color: yellow;
+}
+.liListOfTodos.priority3 {
+    background-color: blue;
+}

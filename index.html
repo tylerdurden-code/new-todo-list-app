@@ -5,8 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="container">
+        <div class="header">My Todo App </div>
+        <div class="mainPage">
+            <div class="menu">
+                <div class="menuHeader">
+                    <div class="menuHeaderTitle">My Todo List</div>
+                    <svg class="editMenuHeaderTitle" style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                    </svg>
+                </div>
+                <div class="myTasks">
+                    <h2 class="myTaskTitle">My Tasks</h2>
+                    <ul class="myTasksList">
+                        <li class="selectedTask">1234</li>
+                        <li>1324513</li>
+                    </ul>
+                    <input type="text" placeholder="Add a new list" class="inputNewList">
+                    <div class="deleteBtnDiv">
+                        <h3>Delete</h3>
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="todoList">
+                <div class="todoListHeader">
+                    <div class="todoListTitle">
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M15,5A2,2 0 0,1 17,7V23L10,20L3,23V7C3,5.89 3.9,5 5,5H15M9,1H19A2,2 0 0,1 21,3V19L19,18.13V3H7A2,2 0 0,1 9,1Z" />
+                        </svg>
+                        <h3>1234</h3>
+                    </div>
+                    <div class="tasksRemaining">0 tasks remaining</div>
+                </div>
+                <div class="todos">
+                    <ul class="listOfTodos">
+                        <li class="liListOfTodos priority3">gafgfds</li>
+                        <li class="liListOfTodos priority1">gafgfds</li>
+                        <li class="liListOfTodos priority2">gafgfds</li>
+                    </ul>
+                    <div class="todosBtns">
+                        <svg class="addIcon" style="width:40px;height:40px" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                        </svg>
+                        <button id="clearCompletedTasks">Clear completed tasks</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="./dist/main.js"></script>
 </body>
 </html>
