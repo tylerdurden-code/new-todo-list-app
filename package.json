@@ -1,0 +1,25 @@
+{
+  "name": "new-todo-list-app",
+  "version": "1.0.0",
+  "description": "Second attempt to make a todo list. Lets see how it goes",
+  "main": "index.js",
+  "private":"true",
+  "scripts": {
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerdurden-code/new-todo-list-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tylerdurden-code/new-todo-list-app/issues"
+  },
+  "homepage": "https://github.com/tylerdurden-code/new-todo-list-app#readme",
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
