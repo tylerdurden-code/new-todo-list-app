@@ -56,6 +56,7 @@ body {
     gap: 5px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 .editMenuHeaderTitle {
     cursor: pointer;
@@ -66,6 +67,13 @@ body {
     padding: 15px;
     font-size: 25px;
     font-weight: 900;
+}
+.addButtono {
+    background-color: transparent;
+    border: none;
+    font-weight: 900;
+    font-size: 1.2em;
+    cursor: pointer;
 }
 .menu {
     width: 250px;
@@ -178,4 +186,20 @@ body {
 }
 .liListOfTodos.priority3 {
     background-color: blue;
+}
+
+.liListOfTodos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.texto {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tick:hover {
+    color: white;
+    cursor: pointer;
 }

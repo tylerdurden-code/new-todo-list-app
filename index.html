@@ -16,8 +16,8 @@
         <div class="mainPage">
             <div class="menu">
                 <div class="menuHeader">
-                    <div class="menuHeaderTitle">My Todo List</div>
-                    <svg class="editMenuHeaderTitle" style="width:24px;height:24px" viewBox="0 0 24 24">
+                    <div class="menuHeaderTitle" data-title-to-edit >My Todo List</div>
+                    <svg data-edit-title class="editMenuHeaderTitle" style="width:24px;height:24px" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
                     </svg>
                 </div>
@@ -48,9 +48,54 @@
                 </div>
                 <div class="todos">
                     <ul class="listOfTodos">
-                        <li class="liListOfTodos priority3">gafgfds</li>
-                        <li class="liListOfTodos priority1">gafgfds</li>
-                        <li class="liListOfTodos priority2">gafgfds</li>
+                        <li class="liListOfTodos priority3">
+                            <div class="texto">
+                                <svg class="tick" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M19.78,2.2L24,6.42L8.44,22L0,13.55L4.22,9.33L8.44,13.55L19.78,2.2M19.78,5L8.44,16.36L4.22,12.19L2.81,13.55L8.44,19.17L21.19,6.42L19.78,5Z" />
+                                </svg>
+                                <p>h1h1h1h1</p>
+                            </div>
+                            <div class="todoButtons">
+                                <svg cursor="pointer" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                                </svg>
+                                <svg class="editMenuHeaderTitle" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="liListOfTodos priority1">
+                            <div class="texto">
+                                <svg class="tick" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M19.78,2.2L24,6.42L8.44,22L0,13.55L4.22,9.33L8.44,13.55L19.78,2.2M19.78,5L8.44,16.36L4.22,12.19L2.81,13.55L8.44,19.17L21.19,6.42L19.78,5Z" />
+                                </svg>
+                                <p>h1h1h1h1</p>
+                            </div>
+                            <div class="todoButtons">
+                                <svg cursor="pointer" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                                </svg>
+                                <svg class="editMenuHeaderTitle" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li class="liListOfTodos priority2">
+                            <div class="texto">
+                                <svg class="tick" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M19.78,2.2L24,6.42L8.44,22L0,13.55L4.22,9.33L8.44,13.55L19.78,2.2M19.78,5L8.44,16.36L4.22,12.19L2.81,13.55L8.44,19.17L21.19,6.42L19.78,5Z" />
+                                </svg>
+                                <p>h1h1h1h1</p>
+                            </div>
+                            <div class="todoButtons">
+                                <svg cursor="pointer" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                                </svg>
+                                <svg class="editMenuHeaderTitle" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                                </svg>
+                            </div>
+                        </li>
                     </ul>
                     <div class="todosBtns">
                         <svg class="addIcon" style="width:40px;height:40px" viewBox="0 0 24 24">
