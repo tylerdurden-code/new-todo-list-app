@@ -3,9 +3,12 @@ const titleInput = document.querySelector('[data-title-to-edit]')
 const doneBtn = document.querySelector('[data-done-button]')
 
 const addListInput = document.querySelector('[data-list-input]')
+const projects = document.querySelector('[data-my-projects]')
 
 
-var myProjects = [{name:'today'}];
+var myProjects = new Array();
+myProjects
+
 
 function createProjectObject(name) {
     this.name = name;
@@ -52,7 +55,11 @@ editTitle.addEventListener('click',() => {
 })
 
 function displayProjects(myProjects) {
-
+    myProjects.forEach(project => {
+        let li = document.createElement('li')
+        li.innerHTML = project.name
+        projects.appendChild(li)
+    });
 }
 
 addListInput.addEventListener('keydown',(e) => {
@@ -68,7 +75,7 @@ addListInput.addEventListener('keydown',(e) => {
 
 
 function addProject(listName) {
-    const projects = document.querySelector('[data-my-projects]');
+
 
     let projectLi = document.createElement('li');
 
@@ -80,3 +87,5 @@ function addProject(listName) {
 function addProjectToMyProjects(projectName) {
     
 }
+
+displayProjects();
