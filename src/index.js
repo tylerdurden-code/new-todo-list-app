@@ -2,6 +2,14 @@ const editTitle = document.querySelector('[data-edit-title]')
 const titleInput = document.querySelector('[data-title-to-edit]')
 const doneBtn = document.querySelector('[data-done-button]')
 
+const addListInput = document.querySelector('[data-list-input]')
+
+
+var myProjects = [{name:'today'}];
+
+function createProjectObject(name) {
+    this.name = name;
+}
 
 editTitle.addEventListener('click',() => {
     let title = document.querySelector('[data-title-to-edit]')
@@ -10,7 +18,7 @@ editTitle.addEventListener('click',() => {
 
     let inputTitle = document.createElement('input')
     inputTitle.classList.add('inputNewList')
-    inputTitle.dataset.titleToEdit = '';
+    inputTitle.dataset.titleToInput = '';
     // inputTitle.maxLength = '10'
     // inputTitle.setAttribute('onkeydown',title())
     if (editTitle.parentNode.querySelector('[data-done-button') !== null) {
@@ -43,3 +51,32 @@ editTitle.addEventListener('click',() => {
     
 })
 
+function displayProjects(myProjects) {
+
+}
+
+addListInput.addEventListener('keydown',(e) => {
+    if (e.key === 'Enter') {
+        addProject(addListInput.value)
+        let projectObject = new createProjectObject(addListInput.value)
+        addListInput.value = ''
+        myProjects.push(projectObject);
+        console.log(myProjects)
+    }
+    
+})
+
+
+function addProject(listName) {
+    const projects = document.querySelector('[data-my-projects]');
+
+    let projectLi = document.createElement('li');
+
+    projectLi.innerHTML = listName;
+
+    projects.appendChild(projectLi);
+}
+
+function addProjectToMyProjects(projectName) {
+    
+}
