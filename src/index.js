@@ -7,7 +7,7 @@ const projects = document.querySelector('[data-my-projects]')
 
 const deleteBtn = document.querySelector('[data-delete-button]')
 
-
+const h3Title = document.querySelector('[data-project-title]')
 
 
 var myProjects = [{name:'today',selected:true}];
@@ -22,17 +22,27 @@ function deleteProject() {
 
         myProjects.forEach(project => {
             if (project.name === selected.innerHTML) {
-                project.name = '';
+                for( var i = 0; i < myProjects.length; i++){ 
+    
+                    if ( myProjects[i] === project) { 
+                
+                        myProjects.splice(i, 1); 
+                    }
+                
+                }
             }
         })
+
+        // clearArray(myProjects)
     })
 }
 
 function makeSelectedCss() {
     projects.addEventListener('click',(e) => {
+        makeTitle(e.target)
         if (document.querySelector('.selectedTask') === null) {
             projects.firstElementChild.classList.add('selectedTask')
-            return
+            
         }
 
         if (e.target.classList[0] === 'myTasksList') {
@@ -48,19 +58,21 @@ function makeSelectedCss() {
     
 }
 
-function clearArray(arr) {
-    let newMyProjects = arr.filter(function (e) {
-        return e.name = '';
-    })
+// function clearArray(arr) {
+//     let newMyProjects = arr.filter(function (e) {
+//         if (!(e.name = '')) {
+//             return e
+//         }
+//     })
 
-    console.log(newMyProjects)
-}
+//     console.log(newMyProjects)
+// }
 
-function checkEmpty(word) {
-    if (word === '') {
-        return true
-    }
-}
+// function checkEmpty(word) {
+//     if (word === '') {
+//         return true
+//     }
+// }
 
 function makeSelected() {
     myProjects.forEach(project => {
@@ -76,6 +88,15 @@ function makeSelected() {
             projects.getEle
         }
     })
+}
+
+function makeTitle(title) {
+    if (title.className === 'myTasksList') {
+        return
+    }
+    h3Title.innerHTML = title.innerHTML;
+
+
 }
 
 function createProjectObject(name) {
