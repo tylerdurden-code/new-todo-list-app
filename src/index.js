@@ -11,6 +11,7 @@ const deleteBtn = document.querySelector('[data-delete-button]')
 const h3Title = document.querySelector('[data-project-title]')
 
 const addForm = document.querySelector('[data-add-form]')
+const submitButtonHandler = document.querySelector('[data-submit-button]')
 
 
 var myProjects = [{name:'today',selected:true,tasks:[]}];
@@ -227,10 +228,28 @@ function appendForm() {
 
         const tempCopy = templateContent.cloneNode(true);
 
-        todos.appendChild(tempCopy);
-
+        todos.appendChild(templateContent);
+        
+        submitButton();
     })
 }
+
+function submitButton() {
+    document.querySelector('#submit').addEventListener('click',(e) => {
+        // e.preventDefault();
+    if (title.value === "" || dueDate.value === "") {
+        console.log('debuggg')
+    }
+    else {
+        
+        console.log()
+    }
+        document.querySelector('.addForm').reset();
+    })
+}
+    
+
+
 
 // function createTaskObject()
 
@@ -246,6 +265,8 @@ displayProjects(myProjects);
 makeSelectedCss();
 deleteProject();
 appendForm();
+
+
 // checkSelected(;myProjects);
 // makeSelected()
 projects.firstElementChild.classList.add('selectedTask')
