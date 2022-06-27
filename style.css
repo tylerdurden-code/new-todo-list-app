@@ -203,3 +203,39 @@ body {
     color: white;
     cursor: pointer;
 }
+
+.addForm {
+    border: 5px solid black;
+    padding: 10px;
+    background-color: var(--color-columnColor);
+    font-size: .6em;
+}
+#dueDate {
+    border: none;
+    height: 30px;
+    width: 200px;
+    padding: 10px;
+    background-color: transparent;
+    border-bottom: 2px solid black;
+}
+
+#title {
+    border: none;
+    height: 30px;
+    width: 200px;
+    padding: 10px;
+    background-color: transparent;
+    border-bottom: 2px solid black;
+}
+
+#submit {
+    padding: 10px;
+    font-size: .8em;
+    border: none;
+}
+
+#submit:hover {
+    background-color: green;
+    border: none;
+    cursor: pointer;
+}

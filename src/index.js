@@ -1,6 +1,7 @@
 const editTitle = document.querySelector('[data-edit-title]')
 const titleInput = document.querySelector('[data-title-to-edit]')
 const doneBtn = document.querySelector('[data-done-button]')
+const todos = document.querySelector('[data-todos]')
 
 const addListInput = document.querySelector('[data-list-input]')
 const projects = document.querySelector('[data-my-projects]')
@@ -9,8 +10,10 @@ const deleteBtn = document.querySelector('[data-delete-button]')
 
 const h3Title = document.querySelector('[data-project-title]')
 
+const addForm = document.querySelector('[data-add-form]')
 
-var myProjects = [{name:'today',selected:true}];
+
+var myProjects = [{name:'today',selected:true,tasks:[]}];
 
 
 function deleteProject() {
@@ -21,7 +24,7 @@ function deleteProject() {
         console.log(selected.innerHTML)
 
         myProjects.forEach(project => {
-            if (project.name === selected.innerHTML) {
+            if (project.name === (selected.innerHTML).toLowerCase()) {
                 for( var i = 0; i < myProjects.length; i++){ 
     
                     if ( myProjects[i] === project) { 
@@ -102,6 +105,7 @@ function makeTitle(title) {
 function createProjectObject(name) {
     this.name = name;
     this.selected = false;
+    this.tasks = [];
 }
 
 editTitle.addEventListener('click',() => {
@@ -166,6 +170,9 @@ function changeObjectSelected(selection,previousSelection) {
 addListInput.addEventListener('keydown',(e) => {
     
     if (e.key === 'Enter') {
+        if (addListInput.value === "") {
+            return
+        }
         let checkIn = checkIfNameExists(addListInput.value);
         if (checkIn) {
             addListInput.value = ''
@@ -180,6 +187,7 @@ addListInput.addEventListener('keydown',(e) => {
             myProjects.push(projectObject);
             console.log(myProjects)
         }
+        
     }
     
 })
@@ -212,6 +220,19 @@ function checkIfNameExists(namo) {
 
     return check
 }
+function appendForm() {
+    addForm.addEventListener('click',() => {
+        const template = document.querySelector('#formTemplate')
+        const templateContent = template.content
+
+        const tempCopy = templateContent.cloneNode(true);
+
+        todos.appendChild(tempCopy);
+
+    })
+}
+
+// function createTaskObject()
 
 // function checkSelected(myProjects) {
 //     myProjects.forEach(project => {
@@ -224,6 +245,7 @@ function checkIfNameExists(namo) {
 displayProjects(myProjects);
 makeSelectedCss();
 deleteProject();
-// checkSelected(myProjects);
+appendForm();
+// checkSelected(;myProjects);
 // makeSelected()
 projects.firstElementChild.classList.add('selectedTask')
