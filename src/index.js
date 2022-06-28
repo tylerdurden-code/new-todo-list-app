@@ -13,6 +13,10 @@ const h3Title = document.querySelector('[data-project-title]')
 const addForm = document.querySelector('[data-add-form]')
 const submitButtonHandler = document.querySelector('[data-submit-button]')
 
+const listOfTodos = document.querySelector('[data-list-of-todos]')
+
+// const forma = document.forms['.addForm']
+
 
 var myProjects = [{name:'today',selected:true,tasks:[]}];
 
@@ -37,7 +41,7 @@ function deleteProject() {
             }
         })
 
-        // clearArray(myProjects)
+        renderTasks()
     })
 }
 
@@ -58,6 +62,8 @@ function makeSelectedCss() {
 
         var selected = document.querySelector('.selectedTask');
         changeObjectSelected(selected.innerHTML,prevSelected.innerHTML);
+
+        renderTasks();
     })
     
 }
@@ -108,7 +114,12 @@ function createProjectObject(name) {
     this.selected = false;
     this.tasks = [];
 }
-
+function createTaskObject(title,dueDate,priority) {
+    this.title = title;
+    this.dueDate = dueDate;
+    this.priority = priority;
+    this.completed = false;
+}
 editTitle.addEventListener('click',() => {
     let title = document.querySelector('[data-title-to-edit]')
 
@@ -223,6 +234,9 @@ function checkIfNameExists(namo) {
 }
 function appendForm() {
     addForm.addEventListener('click',() => {
+        if (!(document.querySelector('.addForm') === null)) {
+            document.querySelector('.addForm').parentNode.removeChild(document.querySelector('.addForm'));
+        }
         const template = document.querySelector('#formTemplate')
         const templateContent = template.content
 
@@ -231,24 +245,71 @@ function appendForm() {
         todos.appendChild(templateContent);
         
         submitButton();
+        
     })
 }
 
 function submitButton() {
-    document.querySelector('#submit').addEventListener('click',(e) => {
-        // e.preventDefault();
-    if (title.value === "" || dueDate.value === "") {
-        console.log('debuggg')
-    }
-    else {
-        
-        console.log()
-    }
+
+    document.querySelector('.addForm').addEventListener('submit',(e) => {
+        e.preventDefault()
+        const title = document.querySelector('.addForm').elements['title'].value
+        const dueDate = document.querySelector('.addForm').elements['dueDate'].value
+        const priority = document.querySelector('.addForm').elements['priority'].value
         document.querySelector('.addForm').reset();
+        
+        addTaskToObject(title,dueDate,priority);
+        renderTasks();
+        console.log(myProjects)
     })
+    
 }
+   
+function addTaskToObject(title,dueDate,priority) {
+    let newTaskObject = new createTaskObject(title,dueDate,priority)
+    const selectedName = document.querySelector('.selectedTask').innerHTML
+    myProjects.forEach(project => {
+        if (project.name === selectedName) {
+            projectSelectedName = project
+        }
+    })
+    projectSelectedName.tasks.push(newTaskObject);
+}
+
+function renderTasks() {
+    if (document.querySelector('.selectedTask') === null) {
+        listOfTodos.innerHTML = "";
+        return
+    }
+
+    const selectedName = document.querySelector('.selectedTask').innerHTML
     
 
+    myProjects.forEach(project => {
+        if (project.name === selectedName) {
+            projectSelectedName = project
+        }
+    })
+    listOfTodos.innerHTML = "";
+    projectSelectedName.tasks.forEach(task => {
+        appendTask(task)
+    })
+
+}
+
+function appendTask(task) {
+    const taskTemplate = document.querySelector('#taskTemplate')
+    const taskTemplateContent = taskTemplate.content
+    const taskTempCopy = taskTemplateContent.cloneNode(true)
+
+    let li = taskTempCopy.querySelector('li');
+    li.classList.add(task.priority)
+
+    let p = taskTempCopy.querySelector('[data-task-content]');
+    p.innerHTML = `${task.title} ${task.dueDate}`;
+
+    listOfTodos.appendChild(taskTempCopy);
+}
 
 
 // function createTaskObject()

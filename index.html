@@ -45,8 +45,8 @@
                     <div class="tasksRemaining">0 tasks remaining</div>
                 </div>
                 <div class="todos" data-todos>
-                    <ul class="listOfTodos">
-                        <li class="liListOfTodos priority3">
+                    <ul class="listOfTodos" data-list-of-todos>
+                        <!-- <li class="liListOfTodos priority3">
                             <div class="texto">
                                 <svg class="tick" style="width:24px;height:24px" viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M19.78,2.2L24,6.42L8.44,22L0,13.55L4.22,9.33L8.44,13.55L19.78,2.2M19.78,5L8.44,16.36L4.22,12.19L2.81,13.55L8.44,19.17L21.19,6.42L19.78,5Z" />
@@ -93,7 +93,7 @@
                                     <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
                                 </svg>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                     <div class="todosBtns">
                         <svg class="addIcon" style="width:40px;height:40px" viewBox="0 0 24 24" data-add-form>
@@ -102,7 +102,7 @@
                         <button id="clearCompletedTasks">Clear completed tasks</button>
                     </div>
                     <template id="formTemplate">
-                        <form action="#" class="addForm">
+                        <form action="#" class="addForm" >
                             <div class="formTitle">
                                 <label for="title">Title: </label>
                                 <input type="text" name="title" id="title" required>
@@ -113,11 +113,11 @@
                             </div>
                             <div class="formImportance">
                                 <p>Importance:</p>
-                                <input type="radio" id="priority1" name="priority" value="priority1">
+                                <input type="radio" id="priority1" name="priority" value="priority1" checked>
                                 <label for="priority1">P1</label>
-                                <input type="radio" id="priority2" name="priority" value="priority2">
+                                <input type="radio" id="priority2" name="priority" value="priority2" >
                                 <label for="priority2">P2</label>
-                                <input type="radio" id="priority3" name="priority" value="priority3">
+                                <input type="radio" id="priority3" name="priority" value="priority3" >
                                 <label for="priority3">P3</label>
                                 
                             </div>
@@ -125,6 +125,24 @@
                                 <button id="submit" data-submit-button>SUBMIT</button>
                             </div>
                         </form>
+                    </template>
+                    <template id="taskTemplate">
+                        <li class="liListOfTodos priority1">
+                            <div class="texto">
+                                <svg class="tick" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M19.78,2.2L24,6.42L8.44,22L0,13.55L4.22,9.33L8.44,13.55L19.78,2.2M19.78,5L8.44,16.36L4.22,12.19L2.81,13.55L8.44,19.17L21.19,6.42L19.78,5Z" />
+                                </svg>
+                                <p data-task-content>h1h1h1h1</p>
+                            </div>
+                            <div class="todoButtons">
+                                <svg cursor="pointer" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                                </svg>
+                                <svg class="editMenuHeaderTitle" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                                </svg>
+                            </div>
+                        </li>
                     </template>
                 </div>
             </div>
