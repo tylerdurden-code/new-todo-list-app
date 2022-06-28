@@ -15,10 +15,13 @@ const submitButtonHandler = document.querySelector('[data-submit-button]')
 
 const listOfTodos = document.querySelector('[data-list-of-todos]')
 
+
 // const forma = document.forms['.addForm']
 
 
 var myProjects = [{name:'today',selected:true,tasks:[]}];
+
+var id = 0;
 
 
 function deleteProject() {
@@ -114,11 +117,15 @@ function createProjectObject(name) {
     this.selected = false;
     this.tasks = [];
 }
-function createTaskObject(title,dueDate,priority) {
+function createTaskObject(title,dueDate,priority,specialId) {
     this.title = title;
     this.dueDate = dueDate;
     this.priority = priority;
     this.completed = false;
+    this.specialId = specialId;
+    this.deleteTask = function() {
+        console.log('works fine')
+    }
 }
 editTitle.addEventListener('click',() => {
     let title = document.querySelector('[data-title-to-edit]')
@@ -236,13 +243,14 @@ function appendForm() {
     addForm.addEventListener('click',() => {
         if (!(document.querySelector('.addForm') === null)) {
             document.querySelector('.addForm').parentNode.removeChild(document.querySelector('.addForm'));
+            return
         }
         const template = document.querySelector('#formTemplate')
         const templateContent = template.content
 
         const tempCopy = templateContent.cloneNode(true);
 
-        todos.appendChild(templateContent);
+        todos.appendChild(tempCopy);
         
         submitButton();
         
@@ -266,7 +274,8 @@ function submitButton() {
 }
    
 function addTaskToObject(title,dueDate,priority) {
-    let newTaskObject = new createTaskObject(title,dueDate,priority)
+    let newTaskObject = new createTaskObject(title,dueDate,priority,id)
+    id++;
     const selectedName = document.querySelector('.selectedTask').innerHTML
     myProjects.forEach(project => {
         if (project.name === selectedName) {
@@ -295,6 +304,8 @@ function renderTasks() {
         appendTask(task)
     })
 
+    renderTasksRemaining(projectSelectedName);
+    // deleteTask();
 }
 
 function appendTask(task) {
@@ -304,14 +315,45 @@ function appendTask(task) {
 
     let li = taskTempCopy.querySelector('li');
     li.classList.add(task.priority)
+    li.dataset.specialId = task.specialId;
 
     let p = taskTempCopy.querySelector('[data-task-content]');
     p.innerHTML = `${task.title} ${task.dueDate}`;
 
+    let btns = taskTempCopy.querySelector('[data-todo-btns]');
+
+    let delBtn = btns.querySelector('[data-delete-task]')
+
+    delBtn.addEventListener('click',() =>{
+        task.deleteTask();
+    })
+
+
     listOfTodos.appendChild(taskTempCopy);
+    
 }
 
+function renderTasksRemaining(selected) {
+    let length = selected.tasks.length;
+    const p = document.querySelector('[data-task-remaining]')
+    if (length === 1) {
+        p.innerHTML = `${length} task remaining`
+    }
+    else {
+        p.innerHTML = `${length} tasks remaining`
+    }
+}
 
+// function deleteTask() {
+//     const deleteTaskBtn = document.querySelector('[data-delete-task]')
+//     deleteTaskBtn.addEventListener('click',() => {
+//         let parent = deleteTaskBtn.parentNode;
+//         let grandParent = parent.parentNode;
+//         let deleteId = deleteTaskBtn.dataset.deleteId;
+
+//         console.log(deleteId)
+//     })
+// }
 // function createTaskObject()
 
 // function checkSelected(myProjects) {
@@ -326,6 +368,8 @@ displayProjects(myProjects);
 makeSelectedCss();
 deleteProject();
 appendForm();
+renderTasks();
+
 
 
 // checkSelected(;myProjects);

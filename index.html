@@ -42,7 +42,7 @@
                         </svg>
                         <h3 data-project-title>Today</h3>
                     </div>
-                    <div class="tasksRemaining">0 tasks remaining</div>
+                    <div class="tasksRemaining" data-task-remaining>0 tasks remaining</div>
                 </div>
                 <div class="todos" data-todos>
                     <ul class="listOfTodos" data-list-of-todos>
@@ -127,15 +127,15 @@
                         </form>
                     </template>
                     <template id="taskTemplate">
-                        <li class="liListOfTodos priority1">
+                        <li class="liListOfTodos">
                             <div class="texto">
                                 <svg class="tick" style="width:24px;height:24px" viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M19.78,2.2L24,6.42L8.44,22L0,13.55L4.22,9.33L8.44,13.55L19.78,2.2M19.78,5L8.44,16.36L4.22,12.19L2.81,13.55L8.44,19.17L21.19,6.42L19.78,5Z" />
                                 </svg>
                                 <p data-task-content>h1h1h1h1</p>
                             </div>
-                            <div class="todoButtons">
-                                <svg cursor="pointer" style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <div class="todoButtons" data-todo-btns>
+                                <svg data-delete-task cursor="pointer" style="width:24px;height:24px" viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
                                 </svg>
                                 <svg class="editMenuHeaderTitle" style="width:24px;height:24px" viewBox="0 0 24 24">
