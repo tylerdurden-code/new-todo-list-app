@@ -124,7 +124,11 @@ function createTaskObject(title,dueDate,priority,specialId) {
     this.completed = false;
     this.specialId = specialId;
     this.deleteTask = function() {
-        console.log('works fine')
+        console.log(this)
+
+        
+        // let selected = document.querySelector('.selectedTask')
+
     }
 }
 editTitle.addEventListener('click',() => {
