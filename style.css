@@ -199,6 +199,17 @@ body {
     gap: 10px;
 }
 
+/* .tick.completed {
+    color: green;
+    
+} */
+
+[data-completed ='true'] {
+    color: green;
+}
+[data-completed ='false'] {
+    color: black;
+}
 .tick:hover {
     color: white;
     cursor: pointer;
@@ -206,6 +217,12 @@ body {
 
 .addForm {
     border: 5px solid black;
+    padding: 10px;
+    background-color: var(--color-columnColor);
+    font-size: .6em;
+}
+.addEditForm {
+    border: 5px solid green;
     padding: 10px;
     background-color: var(--color-columnColor);
     font-size: .6em;

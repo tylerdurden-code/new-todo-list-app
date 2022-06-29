@@ -144,7 +144,20 @@ function createTaskObject(title,dueDate,priority,specialId) {
                 }
             }
         })
-
+        renderTasks();
+    }
+    this.editTask = function() {
+        appendEditForm(this)
+    }
+    this.makeCompleted = function() {
+        if (this.completed) {
+            this.completed = false;
+            renderTasks();
+            return
+        }
+        this.completed = true;
+        renderTasks();
+        
     }
 }
 editTitle.addEventListener('click',() => {
@@ -277,6 +290,62 @@ function appendForm() {
     })
 }
 
+function clearCompletedTasks() {
+    const clearCompletedTasksBtn = document.querySelector('[data-clear-tasks]')
+
+    clearCompletedTasksBtn.addEventListener('click',() => {
+        let selected = document.querySelector('.selectedTask')
+
+        myProjects.forEach(project => {
+            if (project.name === selected.innerHTML) {
+                selectedProjectName = project;
+            }
+        })
+
+        selectedProjectName.tasks.forEach(task => {
+            if (task.completed === true) {
+                task.deleteTask();
+            }
+        }) 
+    })
+}
+
+function appendEditForm(taskThis) {
+    if (!(document.querySelector('.addEditForm') === null)) {
+        document.querySelector('.addEditForm').parentNode.removeChild(document.querySelector('.addEditForm'));
+        return
+    }
+    const template = document.querySelector('#formEditTemplate')
+    const templateContent = template.content
+
+    const tempCopy = templateContent.cloneNode(true);
+
+    todos.appendChild(tempCopy);
+
+    submitEditButon(taskThis);
+}
+
+function submitEditButon(taskThis) {
+    document.querySelector('.addEditForm').addEventListener('submit',(e) => {
+        e.preventDefault()
+        const title = document.querySelector('.addEditForm').elements['title'].value
+        const dueDate = document.querySelector('.addEditForm').elements['dueDate'].value
+        const priority = document.querySelector('.addEditForm').elements['priority'].value
+        document.querySelector('.addEditForm').reset();
+        
+        // addTaskToObject(title,dueDate,priority);
+        taskThis.title = title;
+        taskThis.dueDate = dueDate;
+        taskThis.priority = priority;
+        renderTasks();
+        console.log(myProjects)
+        document.querySelector('.addEditForm').parentNode.removeChild(document.querySelector('.addEditForm'))
+    })
+    
+
+}
+
+
 function submitButton() {
 
     document.querySelector('.addForm').addEventListener('submit',(e) => {
@@ -343,6 +412,15 @@ function appendTask(task) {
     let btns = taskTempCopy.querySelector('[data-todo-btns]');
 
     let delBtn = btns.querySelector('[data-delete-task]')
+    let editBtn = btns.querySelector('[data-edit-task]')
+    let completedBtn = taskTempCopy.querySelector('[data-tick-button]')
+
+    if (task.completed) {
+        completedBtn.dataset.completed = 'true'
+    } 
+    if (task.completed === false) {
+        completedBtn.dataset.completed = 'false'
+    }
 
     delBtn.addEventListener('click',() =>{
         let li = delBtn.parentNode.parentNode;
@@ -350,7 +428,13 @@ function appendTask(task) {
         task.deleteTask();
     })
 
-
+    editBtn.addEventListener('click',() => {
+        task.editTask();
+    })
+    
+    completedBtn.addEventListener('click',() => {
+        task.makeCompleted();
+    })
     listOfTodos.appendChild(taskTempCopy);
     
 }
@@ -391,6 +475,7 @@ makeSelectedCss();
 deleteProject();
 appendForm();
 renderTasks();
+clearCompletedTasks()
 
 
 
