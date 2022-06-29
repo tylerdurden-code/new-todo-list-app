@@ -395,6 +395,8 @@ function renderTasks() {
 
     renderTasksRemaining(projectSelectedName);
     // deleteTask();
+    // localStorage.setItem('projects',JSON.stringify(myProjects))
+    
 }
 
 function appendTask(task) {
@@ -450,6 +452,20 @@ function renderTasksRemaining(selected) {
     }
 }
 
+function firstRender() {
+
+    if (localStorage.getItem('projects') === null) {
+        return
+    }
+    
+    let projects = localStorage.getItem('projects')
+    let savedMyProjects = JSON.parse(projects);
+
+    savedMyProjects.forEach(savedProject => {
+        myProjects.push(savedProject);
+    })
+}
+
 // function deleteTask() {
 //     const deleteTaskBtn = document.querySelector('[data-delete-task]')
 //     deleteTaskBtn.addEventListener('click',() => {
@@ -469,6 +485,8 @@ function renderTasksRemaining(selected) {
 //         }
 //     })
 // }
+
+// firstRender();
 
 displayProjects(myProjects);
 makeSelectedCss();
