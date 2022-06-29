@@ -124,10 +124,26 @@ function createTaskObject(title,dueDate,priority,specialId) {
     this.completed = false;
     this.specialId = specialId;
     this.deleteTask = function() {
-        console.log(this)
+        let selected = document.querySelector('.selectedTask')
 
-        
-        // let selected = document.querySelector('.selectedTask')
+        myProjects.forEach(project => {
+            if (project.name === selected.innerHTML) {
+                 nameProject = project;
+            }
+        })
+
+        nameProject.tasks.forEach(task => {
+            if (task === this) {
+                for( var i = 0; i < nameProject.tasks.length; i++){ 
+    
+                    if ( nameProject.tasks[i] === this) { 
+                
+                        nameProject.tasks.splice(i, 1); 
+                    }
+                
+                }
+            }
+        })
 
     }
 }
@@ -329,6 +345,8 @@ function appendTask(task) {
     let delBtn = btns.querySelector('[data-delete-task]')
 
     delBtn.addEventListener('click',() =>{
+        let li = delBtn.parentNode.parentNode;
+        li.parentNode.removeChild(li)
         task.deleteTask();
     })
 
